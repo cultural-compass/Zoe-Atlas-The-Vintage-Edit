@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Zoe's Curated Finds</title>
+  <style>
+    body { font-family: sans-serif; margin: 0; padding: 0; background-color: #f4f2ee; color: #333; }
+    header { background-color: #5d5d5d; color: #fff; padding: 20px; text-align: center; }
+    h1 { font-family: serif; margin-bottom: 5px; }
+    #map { height: 600px; width: 100%; }
+    #content { padding: 20px; max-width: 900px; margin: 0 auto; }
+    .store-list-container { margin-top: 30px; }
+    .store-item { border-bottom: 1px solid #ddd; padding-bottom: 20px; margin-bottom: 20px; }
+    .store-item:last-child { border-bottom: none; }
+    .store-item h3 { color: #5d5d5d; }
+    .store-item p { margin: 5px 0; }
+    .store-item a { color: #a0522d; text-decoration: none; font-weight: bold; }
+    .store-item a:hover { text-decoration: underline; }
+    .cta-button {
+      display: block;
+      width: fit-content;
+      margin: 40px auto;
+      padding: 15px 30px;
+      background-color: #a0522d;
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    .cta-button:hover { background-color: #8b4513; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Curated Finds</h1>
+    <p>A Traveler's Guide to the World's Best Vintage & Thrift Stores</p>
+  </header>
+
+  <div id="content">
+    <p>
+      Discover my personally selected list of the most unique and inspiring vintage and thrift stores I've visited around the globe.
+      Each location has been hand-picked for its exceptional finds and authentic character.
+    </p>
+
+    <div id="map-container">
+      <h2>Explore on the Map</h2>
+      <p>Here's a preview of a few of my favorite spots to get you started.</p>
+      <div id="map"></div>
+    </div>
+    
+    <div class="store-list-container">
+      <h2>Free Preview List</h2>
+      <div id="store-list">
+        </div>
+    </div>
+
+    <a href="YOUR_GUMROAD_LINK_HERE" class="cta-button">Unlock the Full Guide</a>
+
+  </div>
+
+  <script>
+    // Replace with your actual store data
+    const curatedFinds = [
+      {
+        name: "Lost & Found Vintage",
+        location: { lat: 34.052235, lng: -118.243683 }, // Los Angeles
+        description: "Known for its incredible collection of 1970s and 80s band tees.",
+        image: "https://via.placeholder.com/400x200.png?text=LA+Vintage",
+        link: "#",
+        curation_note: "A must-visit for its rare finds and curated selection of menswear."
+      },
+      {
+        name: "Le Monde d'Arthur",
+        location: { lat: 48.856614, lng: 2.352222 }, // Paris
+        description: "A small, charming shop filled with classic French designer pieces.",
+        image: "https://via.placeholder.com/400x200.png?text=Paris+Vintage",
+        link: "#",
+        curation_note: "The owner is an absolute expert and can tell you the history of every piece."
+      },
+      // Add more stores to your list for the full guide
+    ];
+
+    // Initialize the map and markers
+    function initMap() {
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 2,
+        center: { lat: 0, lng: 0 }
+      });
+
+      curatedFinds.forEach(store => {
+        const marker = new google.maps.Marker({
+          position: store.location,
+          map: map,
+          title: store.name
+        });
+        
+        // You can add a click listener to show more info in a window
+        const infowindow = new google.maps.InfoWindow({
+            content: `<h3>${store.name}</h3><p>${store.description}</p>`
+        });
+        marker.addListener("click", () => {
+          infowindow.open(map, marker);
+        });
+      });
+    }
+
+    // Display the list of stores below the map
+    function displayStoreList() {
+      const storeListContainer = document.getElementById("store-list");
+      curatedFinds.forEach(store => {
+        const storeDiv = document.createElement("div");
+        storeDiv.classList.add("store-item");
+        storeDiv.innerHTML = `
+          <h3>${store.name}</h3>
+          <p><strong>Curation Note:</strong> ${store.curation_note}</p>
+          <p>${store.description}</p>
+        `;
+        storeListContainer.appendChild(storeDiv);
+      });
+    }
+
+    // Load the Google Maps API script
+    function loadMapScript() {
+      const script = document.createElement("script");
+      script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap`;
+      script.async = true;
+      document.head.appendChild(script);
+    }
+    
+    // Call the functions to load the map and display the list
+    window.onload = function() {
+      loadMapScript();
+      displayStoreList();
+    };
+  </script>
+</body>
+</html>
