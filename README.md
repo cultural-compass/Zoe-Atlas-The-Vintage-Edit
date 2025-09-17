@@ -6,28 +6,37 @@ Welcome to **The Vintage Edit**, your go-to global guide for thrift stores, vint
 
 ---
 
-## 🌍 Explore
+## 🌍 Explore the Interactive Map
 
-- Browse thrift stores and vintage shops by country and city.  
-- Get insider tips and recommendations for your next shopping trip.  
-- Contribute your favorite finds to help the community grow.  
+We’re kicking things off in Dublin! Check out our **interactive map** to see all the vintage and thrift spots in the city:  
 
-Check out the detailed guide here: [Vintage Stores Folder](./vintage-stores)
+[View the Interactive Map →](https://your-github-username.github.io/zoe-atlas-the-vintage-edit/maps/dublin.html)  
+
+Each marker includes:  
+- Store name & type (thrift, vintage, resale)  
+- Location with Google Maps links  
+- Fun tips and insider info  
+
+More cities are coming soon—stay tuned!  
+
+*(Optional: Add a screenshot of the map here for a visual pop.)*
 
 ---
 
 ## 🔮 Coming Soon
 
-- Interactive maps of thrift stores worldwide  
+- Interactive maps of more cities worldwide  
 - Curated vintage travel itineraries  
-- Expanded collections and surprises from Zoe Atlas  
+- Community contributions and tips  
 
 ---
 
 ## Contributing
 
-Want to add your favorite vintage spots? Check out the `vintage-stores/README.md` for instructions on contributing.
+Want to add your favorite vintage spots?  
+1. Fork the repo.  
+2. Add your store location & details using the same marker format in the map HTML.  
+3. Submit a pull request with a description of your contribution.  
 
----
+See [CO]()
 
-*Made with 💖 by Zoe Atlas*
