@@ -1,33 +1,21 @@
-# Zoe Atlas - The Vintage Edit
+# The Vintage Edit: Global Thrift & Vintage Map
 
 Hey love bugs! 💖  
 
-Welcome to **The Vintage Edit**, your go-to global guide for thrift stores, vintage shops, and unique shopping destinations around the world. Curated by me, Zoe Atlas, this is all about discovering hidden gems, sustainable finds, and a little adventure along the way.
+This is your hub for discovering thrift stores, vintage shops, and unique shopping destinations worldwide. Curated by Zoe Atlas, this is all about hidden gems, sustainable finds, and a little adventure along the way.
 
 ---
 
-## 🌍 Explore the Interactive Map
+## 🌍 Explore the Map
 
-We’re kicking things off in Dublin! Check out our **interactive map** to see all the vintage and thrift spots in the city:  
+Check out our **interactive map** for Dublin’s vintage and thrift spots (more cities coming soon!):  
 
-[View the Interactive Map →](https://your-github-username.github.io/Zoe-Atlas-The-Vintage-Edit/maps/dublin.html)  
+[View the Interactive Map →](https://your-github-username.github.io/zoe-atlas-the-vintage-edit/maps/dublin.html)
 
 Each marker includes:  
 - Store name & type (thrift, vintage, resale)  
 - Location with Google Maps links  
 - Fun tips and insider info  
-
-More cities are coming soon—stay tuned!  
-
-*(Optional: Add a screenshot of the map here for a visual pop.)*
-
----
-
-## 🔮 Coming Soon
-
-- Interactive maps of more cities worldwide  
-- Curated vintage travel itineraries  
-- Community contributions and tips  
 
 ---
 
@@ -38,5 +26,17 @@ Want to add your favorite vintage spots?
 2. Add your store location & details using the same marker format in the map HTML.  
 3. Submit a pull request with a description of your contribution.  
 
-See [CO]()
+See [CONTRIBUTING.md](../CONTRIBUTING.md) for full instructions.
+
+---
+
+## Future Plans
+
+- Expand interactive maps to more cities worldwide  
+- Curated vintage travel itineraries  
+- Community contributions and tips  
+
+---
+
+*Made with 💖 by Zoe Atlas*
 
