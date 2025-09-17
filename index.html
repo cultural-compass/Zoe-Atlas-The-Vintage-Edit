@@ -32,8 +32,15 @@
       font-size: 1em;
     }
 
+    #description {
+      padding: 10px;
+      text-align: center;
+      font-size: 1em;
+      background-color: #fefefe;
+    }
+
     #map {
-      height: calc(100vh - 140px); /* header + footer */
+      height: calc(100vh - 240px); /* header + description + footer + list */
       width: 100%;
     }
 
@@ -43,22 +50,38 @@
       background: linear-gradient(90deg, teal, pink, lavender, green);
     }
 
-    footer input {
+    #search {
       padding: 5px;
       font-size: 1em;
       border: none;
       border-radius: 5px;
       width: 60%;
+      margin-bottom: 5px;
+    }
+
+    #shop-list {
+      max-height: 120px;
+      overflow-y: auto;
+      margin: 0 auto;
+      width: 60%;
+      text-align: left;
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    #shop-list div {
+      padding: 5px;
+      cursor: pointer;
+    }
+
+    #shop-list div:hover {
+      background-color: #f0f0f0;
     }
 
     a {
       color: teal;
-    }
-
-    /* Hover animation for circle markers */
-    .leaflet-interactive:hover {
-      transform: scale(1.4);
-      transition: transform 0.2s;
     }
   </style>
 </head>
@@ -66,19 +89,26 @@
 
 <header>
   <h1>💖 The Vintage Edit: Global Thrift & Vintage Map 💖</h1>
-  <p>Explore curated vintage and thrift shops from around the world! Click a marker to zoom in and open its location in Google Maps.</p>
+  <p>Explore curated vintage and thrift shops from around the world!</p>
 </header>
+
+<div id="description">
+  Click a marker to zoom in and open its location in Google Maps.<br>
+  Use the search bar or click a shop from the list below to find your favorite spots.
+</div>
 
 <div id="map"></div>
 
 <footer>
   <input type="text" id="search" placeholder="Search shops by name...">
+  <div id="shop-list"></div>
 </footer>
 
 <!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script>
-  const map = L.map('map').setView([20, 0], 2); // global view
+  // Start centered on Dublin
+  const map = L.map('map').setView([53.3447, -6.2635], 6);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -100,6 +130,7 @@
   ];
 
   const markers = [];
+  const shopListDiv = document.getElementById('shop-list');
 
   shops.forEach((shop, index) => {
     const color = colors[index % colors.length];
@@ -113,10 +144,19 @@
     }).addTo(map).bindPopup(mapsLink(shop.name, shop.address));
 
     marker.on('click', () => {
-      map.setView(marker.getLatLng(), 16); // zoom in on click
+      map.setView(marker.getLatLng(), 16);
     });
 
     markers.push({marker, name: shop.name.toLowerCase()});
+
+    // Add to clickable list
+    const shopItem = document.createElement('div');
+    shopItem.textContent = shop.name;
+    shopItem.addEventListener('click', () => {
+      map.setView(shop.coords, 16);
+      marker.openPopup();
+    });
+    shopListDiv.appendChild(shopItem);
   });
 
   // Search/filter functionality
@@ -128,6 +168,15 @@
         obj.marker.addTo(map);
       } else {
         map.removeLayer(obj.marker);
+      }
+    });
+
+    // Filter list too
+    shopListDiv.childNodes.forEach((item, idx) => {
+      if (shops[idx].name.toLowerCase().includes(query)) {
+        item.style.display = '';
+      } else {
+        item.style.display = 'none';
       }
     });
   });
