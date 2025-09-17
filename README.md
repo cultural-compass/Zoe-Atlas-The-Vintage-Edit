@@ -1,31 +1,33 @@
-# Zoe Atlas 🌍  
+# Zoe Atlas - The Vintage Edit
 
-An interactive travel atlas inspired by the idea of a modern “Green Book.”  
-This project highlights destinations I’ve visited — organized by country and city — with clickable markers, dropdown navigation, and popups containing details about each location.  
+Hey love bugs! 💖  
 
-## 🚀 Live Demo
-Check it out here: [Zoes-Atlas on GitHub Pages](https://cultural-compass.github.io/Zoes-Atlas/)  
-Or visit directly: 
+Welcome to **The Vintage Edit**, your go-to global guide for thrift stores, vintage shops, and unique shopping destinations around the world. Curated by me, Zoe Atlas, this is all about discovering hidden gems, sustainable finds, and a little adventure along the way.
 
-## ✨ Features  
-- Dropdown navigation by country & city  
-- Clickable markers with info popups  
-- Organized and expandable structure for future locations  
-- Responsive design for desktop and mobile  
+---
 
-## 🛠️ Tech Stack  
-- **HTML** – structure  
-- **CSS** – styling  
-- **JavaScript** – interactivity  
-- **Google Maps API** – map & location services  
+## 🌍 Explore
 
-## 📌 Future Improvements  
-- Add continent-level filtering for larger organization  
-- Include more locations (Spain, Dublin, Colombia, etc.)  
-- Improve styling for accessibility and mobile experience  
-- Integrate user contributions or ratings  
+- Browse thrift stores and vintage shops by country and city.  
+- Get insider tips and recommendations for your next shopping trip.  
+- Contribute your favorite finds to help the community grow.  
 
-## 🧑‍💻 How to Run Locally  
-1. Clone this repository  
-   ```bash
-   git clone https://github.com/cultural-compass/Zoes-Atlas.git
+Check out the detailed guide here: [Vintage Stores Folder](./vintage-stores)
+
+---
+
+## 🔮 Coming Soon
+
+- Interactive maps of thrift stores worldwide  
+- Curated vintage travel itineraries  
+- Expanded collections and surprises from Zoe Atlas  
+
+---
+
+## Contributing
+
+Want to add your favorite vintage spots? Check out the `vintage-stores/README.md` for instructions on contributing.
+
+---
+
+*Made with 💖 by Zoe Atlas*
