@@ -2,98 +2,136 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>The Vintage Edit - Dublin</title>
+  <title>💖 The Vintage Edit: Global Thrift & Vintage Map 💖</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
   <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      text-align: center;
+      padding: 15px;
+      color: white;
+      background: linear-gradient(90deg, teal, pink, lavender, green);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8em;
+    }
+
+    header p {
+      margin: 5px 0 0 0;
+      font-size: 1em;
+    }
+
     #map {
-      height: 100vh;
+      height: calc(100vh - 140px); /* header + footer */
       width: 100%;
+    }
+
+    footer {
+      padding: 10px;
+      text-align: center;
+      background: linear-gradient(90deg, teal, pink, lavender, green);
+    }
+
+    footer input {
+      padding: 5px;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      width: 60%;
+    }
+
+    a {
+      color: teal;
+    }
+
+    /* Hover animation for circle markers */
+    .leaflet-interactive:hover {
+      transform: scale(1.4);
+      transition: transform 0.2s;
     }
   </style>
 </head>
 <body>
-  <div id="map"></div>
 
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script>
-    // Initialize map centered on Dublin
-    const map = L.map('map').setView([53.3498, -6.2603], 13);
+<header>
+  <h1>💖 The Vintage Edit: Global Thrift & Vintage Map 💖</h1>
+  <p>Explore curated vintage and thrift shops from around the world! Click a marker to zoom in and open its location in Google Maps.</p>
+</header>
 
-    // Tile layer (this makes the actual map show)
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
+<div id="map"></div>
 
-    // Helper to build Google Maps links
-    function mapsLink(name, address) {
-      return `<b>${name}</b><br>${address}<br>
-      <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}" target="_blank">Open in Google Maps</a>`;
-    }
+<footer>
+  <input type="text" id="search" placeholder="Search shops by name...">
+</footer>
 
-    // Vintage & charity shops
-    const shops = [
-      {
-        name: "Nine Crows Vintage (Temple Bar)",
-        address: "22 Temple Lane South, Temple Bar, Dublin 2",
-        coords: [53.3447, -6.2635]
-      },
-      {
-        name: "Lou's Lot",
-        address: "George's Street Arcade, South Great George's Street, Dublin 2",
-        coords: [53.3423, -6.2644]
-      },
-      {
-        name: "Lucy's Lounge",
-        address: "11 Fownes Street Upper, Dublin D02 XW64",
-        coords: [53.3453, -6.2632]
-      },
-      {
-        name: "Enable Ireland Charity Shop",
-        address: "8 South Great George's Street, Dublin",
-        coords: [53.3422, -6.2640]
-      },
-      {
-        name: "Vincent's George's Street",
-        address: "Unit 11, 73, 83 South Great George's Street, Dublin",
-        coords: [53.3425, -6.2639]
-      },
-      {
-        name: "Oxfam Home",
-        address: "Francis Street, Dublin",
-        coords: [53.3416, -6.2731]
-      },
-      {
-        name: "Simon Community Shop",
-        address: "57 Lower Camden Street, Dublin",
-        coords: [53.3345, -6.2652]
-      },
-      {
-        name: "NCBI Charity Store",
-        address: "Camden Street Lower, Saint Kevin's, Dublin 2",
-        coords: [53.3338, -6.2650]
-      },
-      {
-        name: "Assisi Dublin",
-        address: "71 Meath Street, Dublin D8",
-        coords: [53.3421, -6.2745]
-      },
-      {
-        name: "Le Zeitgeist Flea Market",
-        address: "Dalymount Park, Phibsborough, Dublin 7, Ireland",
-        coords: [53.3607, -6.2722]
-      }
-    ];
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+  const map = L.map('map').setView([20, 0], 2); // global view
 
-    // Add markers
-    shops.forEach(shop => {
-      L.marker(shop.coords).addTo(map)
-        .bindPopup(mapsLink(shop.name, shop.address));
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+
+  const colors = ['teal', 'pink', 'lavender', 'green'];
+
+  function mapsLink(name, address) {
+    return `<b>${name}</b><br>${address}<br>
+    <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}" target="_blank">Open in Google Maps</a>`;
+  }
+
+  const shops = [
+    {name: "Nine Crows Vintage", address: "22 Temple Lane South, Temple Bar, Dublin 2", coords: [53.3447, -6.2635]},
+    {name: "Lou's Lot", address: "George's Street Arcade, South Great George's Street, Dublin 2", coords: [53.3423, -6.2644]},
+    {name: "Lucy's Lounge", address: "11 Fownes Street Upper, Dublin D02 XW64", coords: [53.3453, -6.2632]},
+    // Add more global shops here...
+  ];
+
+  const markers = [];
+
+  shops.forEach((shop, index) => {
+    const color = colors[index % colors.length];
+    const marker = L.circleMarker(shop.coords, {
+      radius: 10,
+      fillColor: color,
+      color: 'white',
+      weight: 2,
+      opacity: 1,
+      fillOpacity: 0.9
+    }).addTo(map).bindPopup(mapsLink(shop.name, shop.address));
+
+    marker.on('click', () => {
+      map.setView(marker.getLatLng(), 16); // zoom in on click
     });
-  </script>
+
+    markers.push({marker, name: shop.name.toLowerCase()});
+  });
+
+  // Search/filter functionality
+  const searchInput = document.getElementById('search');
+  searchInput.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase();
+    markers.forEach(obj => {
+      if (obj.name.includes(query)) {
+        obj.marker.addTo(map);
+      } else {
+        map.removeLayer(obj.marker);
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
