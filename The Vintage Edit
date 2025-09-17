@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The Vintage Edit - Dublin Finds</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Georgia", serif;
+      background: #f5f0e6;
+    }
+    #map {
+      width: 100vw;
+      height: 100vh;
+    }
+    .leaflet-popup-content {
+      font-size: 1.1em;
+      line-height: 1.4;
+    }
+    .leaflet-popup-content a {
+      color: #b85c38;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .leaflet-popup-content a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+  // Create the map
+  var map = L.map('map').setView([53.344, -6.267], 13); // Centered on Dublin
+
+  // Stamen Watercolor tile layer for cute vintage vibe
+  L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg', {
+    attribution: 'Map tiles by <a href="https://stamen.com/">Stamen Design</a>, <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+    minZoom: 1,
+    maxZoom: 16
+  }).addTo(map);
+
+  // Helper for Google Maps links
+  function googleMapsLink(lat, lon) {
+    return `https://www.google.com/maps?q=${lat},${lon}`;
+  }
+
+  // ---------- MARKERS ----------
+
+  // 1. Nine Crows Vintage 👜👗
+  L.marker([53.3442, -6.2631]).addTo(map)
+    .bindPopup(`
+      <b>👜 Nine Crows Vintage</b><br>
+      Curated Y2K & 90s clothing & accessories.<br>
+      22 Temple Lane South, Temple Bar<br>
+      <a href="${googleMapsLink(53.3442, -6.2631)}" target="_blank">Open in Google Maps</a>
+    `);
+
+  // 2. Lou's Lot 💎👗
+  L.marker([53.3445, -6.2645]).addTo(map)
+    .bindPopup(`
+      <b>💎 Lou's Lot</b><br>
+      Designer bags, clothing & vintage homeware.<br>
+      George's Street Arcade, South Great George's Street<br>
+      <a href="${googleMapsLink(53.3445, -6.2645)}" target="_blank">Open in Google Maps</a>
+    `);
+
+  // 3. Lucy's Lounge 🐇👗
+  L.marker([53.3438, -6.2638]).addTo(map)
+    .bindPopup(`
+      <b>🐇 Lucy's Lounge</b><br>
+      Vintage inspired by Alice in Wonderland.<br>
+      11 Fownes Street Upper, Dublin D02 XW64<br>
+      <a href="${googleMapsLink(53.3438, -6.2638)}" target="_blank">Open in Google Maps</a>
+    `);
+
+  // 4. Enable Ireland Charity Shop 🎀
+  L.marker([53.3446, -6.2640]).addTo(map)
+    .bindPopup(`
+      <b>🎀 Enable Ireland Charity Shop</b><br>
+      Accessories & Y2K finds, great cause.<br>
+      8 South Great George's Street<br>
+      <a href="${googleMapsLink(53.3446, -6.2640)}" target="_blank">Open in Google Maps</a>
+    `);
+
+  // 5. Vincent's 👜
+  L.marker([53.3441, -6.2639]).addTo(map)
+    .bindPopup(`
+      <b>👜 Vincent's</b><br>
+      Big store, can get overwhelming but good finds.<br>
+      Unit 11, 73–83 South Great George's Street<br>
+      <a href="${googleMapsLink(53.3441, -6.2639)}" target="_blank">Open in Google Maps</a>
+    `);
+
+  // 6. Oxfam Home 👗
+  L.marker([53.3370, -6.2710]).addTo(map)
+    .bindPopup(`
+      <b>👗 Oxfam Home</b><br>
+      Vintage & great prices.<br>
+      Francis St., Dublin<br>
+      <a href="${googleMapsLink(53.3370, -6.2710)}" target="_blank">Open in Google Maps</a>
+    `);
+
+  // 7. Simon Dublin 🎒
+  L.marker([53.3349, -6.2675]).addTo(map)
+    .bindPopup(`
+      <b>🎒 Simon Dublin</b><br>
+      Great bags & friendly staff.<br>
+      57 Lower Camden Street<br>
+      <a href="${googleMapsLink(53.3349, -6.2675)}" target="_blank">Open in Google Maps</a>
+    `);
+
+  // 8. NCBI Charity Store 💎
+  L.marker([53.3335, -6.2680]).addTo(map)
+    .bindPopup(`
+      <b>💎 NCBI Charity Store</b><br>
+      Affordable finds.<br>
+      Lower Camden Street, Saint Kevin's, Dublin 2<br>
+      <a href="${googleMapsLink(53.3335, -6.2680)}" target="_blank">Open in Google Maps</a>
+    `);
+
+  // 9. Assisi Dublin 👜
+  L.marker([53.3385, -6.2770]).addTo(map)
+    .bindPopup(`
+      <b>👜 Assisi Dublin</b><br>
+      Back of Liberty Market, Italy-sourced luxury.<br>
+      71 Meath Street, Dublin D8<br>
+      <a href="${googleMapsLink(53.3385, -6.2770)}" target="_blank">Open in Google Maps</a>
+    `);
+
+  // 10. Dalymount Park Flea Market 🏷️
+  L.marker([53.3565, -6.2672]).addTo(map)
+    .bindPopup(`
+      <b>🏷️ Dalymount Park Flea Market</b><br>
+      Phibsborough, Dublin 7.<br>
+      <a href="${googleMapsLink(53.3565, -6.2672)}" target="_blank">Open in Google Maps</a>
+    `);
+
+  // 11. Lezeitgeist Flea Market 🍴👗
+  L.marker([53.3565, -6.2672]).addTo(map)
+    .bindPopup(`
+      <b>🍴👗 Lezeitgeist Flea Market</b><br>
+      Food & clothing. Check their FB for schedule.<br>
+      Dalymount Park, Phibsborough, Dublin 7<br>
+      <a href="https://www.facebook.com/lezeitgeistfleamarket/" target="_blank">Facebook</a>
+    `);
+
+</script>
+</body>
+</html>
