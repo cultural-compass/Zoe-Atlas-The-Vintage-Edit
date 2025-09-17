@@ -10,7 +10,7 @@ Welcome to **The Vintage Edit**, your go-to global guide for thrift stores, vint
 
 We’re kicking things off in Dublin! Check out our **interactive map** to see all the vintage and thrift spots in the city:  
 
-[View the Interactive Map →](https://your-github-username.github.io/zoe-atlas-the-vintage-edit/maps/dublin.html)  
+[View the Interactive Map →](https://your-github-username.github.io/Zoe-Atlas-The-Vintage-Edit/maps/dublin.html)  
 
 Each marker includes:  
 - Store name & type (thrift, vintage, resale)  
